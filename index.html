@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday, Meri jaan ❤️</title>
+  
+  <!-- Google Fonts for romantic typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Canvas for Stars, Fireflies & Rose Petals -->
+  <canvas id="bgCanvas"></canvas>
+  <canvas id="fireworksCanvas"></canvas>
+
+  <!-- Ambient Audio Controls -->
+  <div class="audio-control-bar">
+    <button id="musicToggleBtn" class="glass-btn audio-btn" title="Toggle Romantic Music">
+      <span class="icon">🎵</span>
+      <span class="btn-text">Romantic Melody: <strong id="musicStatus">OFF</strong></span>
+    </button>
+    <button id="customizeBtn" class="glass-btn settings-btn" title="Personalize Names & Photos">
+      <span class="icon">✨</span>
+      <span class="btn-text">Personalize</span>
+    </button>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="main-wrapper">
+
+    <!-- ============================================== -->
+    <!-- STEP 1: THE MYSTERY ENVELOPE (LANDING SCREEN) -->
+    <!-- ============================================== -->
+    <section id="step-envelope" class="step-section active">
+      <div class="envelope-container">
+        <div class="floating-badge">💌 For the Woman of My Heart</div>
+        <h1 class="glow-title">To My <span class="highlight-name bride-name-text">My World</span></h1>
+        <p class="subtitle">Today is the most magical day of the year... because today, you came into this world.</p>
+
+        <!-- Interactive 3D Envelope -->
+        <div class="envelope-wrapper" id="envelopeWrapper">
+          <div class="envelope">
+            <div class="envelope-back"></div>
+            <div class="letter-preview">
+              <div class="letter-heart">💖</div>
+              <p class="letter-hint">Tap to open your birthday surprise...</p>
+            </div>
+            <div class="envelope-flap" id="envelopeFlap"></div>
+            <div class="envelope-seal" id="envelopeSeal">
+              <div class="wax-seal">
+                <span>❤️</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button id="openEnvelopeBtn" class="magic-pill-btn pulse-glow">
+          <span class="sparkle">✨</span> Open Your Birthday Surprise <span class="sparkle">✨</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STEP 2: BIRTHDAY CELEBRATION & VIRTUAL CAKE   -->
+    <!-- ============================================== -->
+    <section id="step-cake" class="step-section hidden">
+      <div class="content-card glass-panel">
+        <div class="chapter-tag">Chapter 1 • A Special Celebration</div>
+        <h2 class="section-title">Happy Birthday, <span class="bride-name-text">Meri Pasandida Girl</span>! 🎂</h2>
+        <p class="section-subtext">
+          Close your eyes, make a wish from the deepest corner of your heart, and blow out the candles...
+        </p>
+
+        <!-- Interactive Birthday Cake -->
+        <div class="cake-stage">
+          <div class="cake-container" id="cakeContainer">
+            <!-- Candles -->
+            <div class="candles-wrapper">
+              <div class="candle">
+                <div class="flame" id="flame1"></div>
+                <div class="smoke"></div>
+              </div>
+              <div class="candle candle-center">
+                <div class="flame" id="flame2"></div>
+                <div class="smoke"></div>
+              </div>
+              <div class="candle">
+                <div class="flame" id="flame3"></div>
+                <div class="smoke"></div>
+              </div>
+            </div>
+
+            <!-- Cake Tiers -->
+            <div class="cake-tier tier-top">
+              <div class="frosting-layer"></div>
+              <div class="strawberries">🍓 🍓 🍓</div>
+            </div>
+            <div class="cake-tier tier-middle">
+              <div class="ribbon"></div>
+            </div>
+            <div class="cake-tier tier-bottom">
+              <div class="gold-beads">✨ ✨ ✨ ✨ ✨</div>
+            </div>
+            <div class="cake-plate"></div>
+          </div>
+        </div>
+
+        <div class="cake-action-area">
+          <button id="blowCandleBtn" class="magic-pill-btn blow-btn">
+            💨 Click to Blow the Candles & Make a Wish
+          </button>
+          <p id="wishGrantedText" class="wish-message hidden">
+            ✨ Your wish has been sent straight to the stars! ✨<br>
+            <span class="mini-quote">"May your smile remain as bright and innocent as it is today, forever."</span>
+          </p>
+        </div>
+
+        <div class="section-footer">
+          <button id="toMemoriesBtn" class="continue-btn hidden">
+            Continue To Our Memories <span>👉</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STEP 3: WHY YOU ARE MY PASANDIDA AURAT (MEMORIES) -->
+    <!-- ============================================== -->
+    <section id="step-memories" class="step-section hidden">
+      <div class="content-card glass-panel wide-card">
+        <div class="chapter-tag">Chapter 2 • Why You Mean The World To Me</div>
+        <h2 class="section-title">Why You Will Always Be My <span class="highlight-name">My Heart Beat ❤️</span></h2>
+        <p class="section-subtext">Out of 8 billion people, my heart chose you. Here is why you are unforgettable...</p>
+
+        <!-- Polaroid Memory Grid -->
+        <div class="memory-grid">
+          
+          <!-- Card 1 -->
+          <div class="polaroid-card">
+            <div class="tape-strip"></div>
+            <div class="photo-box">
+              <img id="photo1" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=600&q=80" alt="Your Smile" class="memory-img">
+              <label class="photo-upload-overlay" title="Click to replace with her picture">
+                📷 Change Photo
+                <input type="file" accept="image/*" class="custom-file-input" data-target="photo1">
+              </label>
+            </div>
+            <div class="polaroid-caption">
+              <h3>That Magical Smile</h3>
+              <p>The smile that lights up my darkest days and makes the entire world fade away.</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="polaroid-card">
+            <div class="tape-strip"></div>
+            <div class="photo-box">
+              <img id="photo2" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" alt="Pure Heart" class="memory-img">
+              <label class="photo-upload-overlay" title="Click to replace with her picture">
+                📷 Change Photo
+                <input type="file" accept="image/*" class="custom-file-input" data-target="photo2">
+              </label>
+            </div>
+            <div class="polaroid-caption">
+              <h3>Your Golden Heart</h3>
+              <p>Your pure soul, your innocent laughter, and the warmth you give to everyone around you.</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="polaroid-card">
+            <div class="tape-strip"></div>
+            <div class="photo-box">
+              <img id="photo3" src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80" alt="Our Talks" class="memory-img">
+              <label class="photo-upload-overlay" title="Click to replace with her picture">
+                📷 Change Photo
+                <input type="file" accept="image/*" class="custom-file-input" data-target="photo3">
+              </label>
+            </div>
+            <div class="polaroid-caption">
+              <h3>My Safe Haven</h3>
+              <p>With you, I can be completely myself. In your arms, I have found my home.</p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="polaroid-card">
+            <div class="tape-strip"></div>
+            <div class="photo-box">
+              <img id="photo4" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" alt="Together Forever" class="memory-img">
+              <label class="photo-upload-overlay" title="Click to replace with her picture">
+                📷 Change Photo
+                <input type="file" accept="image/*" class="custom-file-input" data-target="photo4">
+              </label>
+            </div>
+            <div class="polaroid-caption">
+              <h3>My Dream Come True</h3>
+              <p>Every prayer I ever made, every wish upon a shooting star... it was always you.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="section-footer">
+          <button id="toLetterBtn" class="magic-pill-btn">
+            Read What My Heart Wants To Tell You 💌
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STEP 4: THE LOVE LETTER                        -->
+    <!-- ============================================== -->
+    <section id="step-letter" class="step-section hidden">
+      <div class="content-card letter-parchment glass-panel">
+        <div class="parchment-border">
+          <div class="letter-header">
+            <span class="letter-date" id="displayLetterDate">On Your Special Day</span>
+            <span class="letter-seal-icon">🌹</span>
+          </div>
+
+          <h2 class="letter-greeting">Dearest <span class="bride-name-text">Meri Pasandida Aurat</span>,</h2>
+
+          <div class="letter-body">
+            <p>
+              Log kehte hain ki Pasandida Aurat hona ek ehsaas hai jo lafzon me bayaan nahi hota. 
+              Par sach yeh hai ki jab se tum meri zindagi me aayi ho, meri har dua me sirf tumhara naam raha hai.
+            </p>
+            <p>
+              On your birthday, while the whole world celebrates another year of your existence, 
+              I celebrate the incredible gift that you are to my life. You brought colors into my ordinary days, 
+              peace to my chaotic mind, and a love so pure that I never knew existed.
+            </p>
+            <p>
+              I don't just want to celebrate today with you... I want to celebrate every sunrise, 
+              every laugh, every quiet evening, and every little dream with you. 
+              Because life without you is just time passing by, but life with you is a fairytale.
+            </p>
+            <p class="letter-highlight">
+              And so, today, on this most special day, I have one question that my heart has been waiting to ask you...
+            </p>
+          </div>
+
+          <div class="letter-sign">
+            <span>With all my love and soul,</span>
+            <strong class="groom-name-text" id="groomSignature">Yours Forever</strong>
+          </div>
+
+          <div class="letter-action">
+            <button id="toProposalBtn" class="magic-pill-btn pulse-glow">
+              💍 Turn The Page to the Final Surprise 💍
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STEP 5: THE BIG PROPOSAL (WILL YOU MARRY ME?)  -->
+    <!-- ============================================== -->
+    <section id="step-proposal" class="step-section hidden">
+      <div class="proposal-stage">
+        
+        <div class="proposal-spotlight"></div>
+        <div class="floating-petals-area"></div>
+
+        <div class="proposal-content">
+          <div class="proposal-badge">From This Day to Eternity 💍</div>
+          
+          <h1 class="proposal-title">
+            <span class="bride-name-text">Meri Pasandida Aurat</span>,
+          </h1>
+          <h2 class="proposal-question">Will You Marry Me?</h2>
+
+          <p class="proposal-subtitle">
+            Will you hold my hand through all the highs and lows, make every cup of morning tea sweeter, 
+            and let me love you for the rest of my days?
+          </p>
+
+          <!-- 3D Interactive Ring Box -->
+          <div class="ring-box-wrapper" id="ringBoxWrapper">
+            <div class="ring-box" id="ringBox">
+              <div class="box-lid" id="boxLid">
+                <div class="lid-top"></div>
+                <div class="lid-ribbon"></div>
+              </div>
+              <div class="box-base">
+                <div class="box-cushion">
+                  <div class="diamond-ring" id="diamondRing">
+                    <div class="ring-band"></div>
+                    <div class="ring-stone">
+                      <div class="sparkle-gem">💎</div>
+                      <div class="stone-glow"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="box-hint" id="boxHint">Tap the velvet box to reveal the ring ✨</p>
+          </div>
+
+          <!-- Proposal Buttons -->
+          <div class="proposal-buttons-area" id="proposalBtnGroup">
+            <button id="yesBtn" class="proposal-btn yes-btn">
+              <span class="btn-shine"></span>
+              <span class="heart-icon">💖</span>
+              <span class="yes-text">YES! A Million Times YES! 💍</span>
+            </button>
+            
+            <button id="noBtn" class="proposal-btn no-btn">
+              <span>No</span>
+            </button>
+          </div>
+
+          <div id="noEscapeMsg" class="no-escape-msg hidden">
+            <span>😉 "Nahi ka to option hi nahi hai, meri jaan!"</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STEP 6: CELEBRATION (SHE SAID YES!)           -->
+    <!-- ============================================== -->
+    <section id="step-celebration" class="step-section hidden">
+      <div class="content-card celebration-card glass-panel">
+        
+        <div class="confetti-crown">🎉 💍 💖 👑 🥂</div>
+        
+        <h1 class="celebration-title">SHE SAID YES!</h1>
+        <p class="celebration-sub">
+          The best chapter of our life has officially begun. <br>
+          <span class="bride-name-text">Meri Pasandida Aurat</span> &amp; <span class="groom-name-text">Mera Humsafar</span>
+        </p>
+
+        <!-- Official Certificate of Love -->
+        <div class="love-certificate" id="loveCertificate">
+          <div class="cert-border">
+            <div class="cert-ribbon">⭐ FOREVER &amp; ALWAYS ⭐</div>
+            <h3 class="cert-title">Certificate of Infinite Love</h3>
+            <p class="cert-text">This certifies that from this day forward,</p>
+            <div class="cert-couple">
+              <span class="cert-bride bride-name-text">Meri Pasandida Aurat</span>
+              <span class="cert-amp">&amp;</span>
+              <span class="cert-groom groom-name-text">Yours Truly</span>
+            </div>
+            <p class="cert-text">are officially bound together by unconditional love, shared laughter, endless hugs, and a lifetime of happiness.</p>
+            <div class="cert-footer">
+              <div class="cert-sign">
+                <div class="sign-line"></div>
+                <span>Her Hand in Mine</span>
+              </div>
+              <div class="cert-seal">
+                <span>💍</span>
+                <small>SEALED</small>
+              </div>
+              <div class="cert-sign">
+                <div class="sign-line"></div>
+                <span id="certDateDisplay">October 4, 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forever Love Counter -->
+        <div class="countdown-widget">
+          <h4>Beginning Our Forever:</h4>
+          <div class="time-counters">
+            <div class="time-box"><span id="daysCount">1</span><label>Day of Joy</label></div>
+            <div class="time-box"><span id="hoursCount">0</span><label>Hours</label></div>
+            <div class="time-box"><span id="minsCount">0</span><label>Minutes</label></div>
+            <div class="time-box"><span id="secsCount">0</span><label>Seconds</label></div>
+          </div>
+        </div>
+
+        <div class="celebration-actions">
+          <button id="replayBtn" class="glass-btn">
+            🔄 Relive The Moment
+          </button>
+          <button id="downloadCertBtn" class="magic-pill-btn">
+            📸 Print / Save Our Promise
+          </button>
+        </div>
+
+        <div class="sweet-quote">
+          "Tere bina meri zindagi adhuri thi, ab tere aane se meri har dua poori hai." ❤️
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================== -->
+  <!-- CUSTOMIZATION MODAL (EDIT NAMES & DETAILS)    -->
+  <!-- ============================================== -->
+  <div id="customizeModal" class="modal-overlay hidden">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <h3>✨ Personalize Your Website</h3>
+        <button id="closeModalBtn" class="close-x">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Customize her name, your name, and romantic details. Everything saves automatically!</p>
+        
+        <div class="form-group">
+          <label for="brideNameInput">Her Name / Title:</label>
+          <input type="text" id="brideNameInput" placeholder="e.g. Meri Pasandida Aurat, Ayesha, Priya, Ananya">
+        </div>
+
+        <div class="form-group">
+          <label for="groomNameInput">Your Name:</label>
+          <input type="text" id="groomNameInput" placeholder="e.g. Jignesh">
+        </div>
+
+        <div class="form-group">
+          <label for="proposalQuestionInput">Proposal Question:</label>
+          <input type="text" id="proposalQuestionInput" placeholder="e.g. Will You Marry Me?">
+        </div>
+
+        <div class="form-group">
+          <label for="bgAudioUpload">Custom Romantic Audio (Optional MP3):</label>
+          <input type="file" id="bgAudioUpload" accept="audio/*">
+          <small class="help-text">Leave empty to use the built-in romantic fairytale piano music.</small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="resetDefaultsBtn" class="glass-btn">Reset Defaults</button>
+        <button id="saveCustomizeBtn" class="magic-pill-btn">Save Changes ❤️</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
